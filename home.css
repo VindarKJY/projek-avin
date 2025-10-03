@@ -1,0 +1,36 @@
+/* ===== HOME SECTION ===== */
+
+.home-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.home-text h1 {
+  font-size: 3rem;
+  margin-bottom: var(--space-sm);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: var(--glow-blue);
+}
+
+.home-text .title {
+  font-size: 1.5rem;
+  color: var(--neon-cyan);
+  margin-bottom: var(--space-sm);
+  text-shadow: var(--glow-cyan);
+}
+
+.home-text p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+  font-size: 1.1rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: var(--space-sm);
+}
