@@ -1,4 +1,4 @@
-// Contact form functionality
+// Contact form functionality - FIXED VERSION
 class ContactFormManager {
   constructor() {
     this.contactForm = document.querySelector(".contact-form");
@@ -12,28 +12,49 @@ class ContactFormManager {
   init() {
     this.initializeEmailJS();
     this.setupFormSubmission();
+    this.debugFormFields(); // ✅ DEBUG: Untuk memeriksa field form
   }
 
   initializeEmailJS() {
     if (typeof emailjs !== "undefined") {
       emailjs.init(this.emailjsPublicKey);
+      console.log("✅ EmailJS initialized with key:", this.emailjsPublicKey);
     } else {
-      console.error("EmailJS library not loaded");
+      console.error("❌ EmailJS library not loaded");
     }
   }
 
   setupFormSubmission() {
     if (this.contactForm) {
+      console.log("✅ Contact form found:", this.contactForm);
       this.contactForm.addEventListener("submit", (e) => {
         this.handleFormSubmit(e);
+      });
+    } else {
+      console.error("❌ Contact form not found!");
+    }
+  }
+
+  // ✅ DEBUG: Method untuk memeriksa field form
+  debugFormFields() {
+    if (this.contactForm) {
+      const fields = ['name', 'email', 'subject', 'message'];
+      fields.forEach(field => {
+        const element = this.contactForm.querySelector(`[name="${field}"]`);
+        console.log(`Field ${field}:`, element ? "FOUND" : "NOT FOUND");
       });
     }
   }
 
   async handleFormSubmit(e) {
     e.preventDefault();
+    console.log("🔄 Form submission started...");
 
-    if (!this.validateForm(this.contactForm)) {
+    // ✅ FIX: Validasi setelah mendapatkan data yang benar
+    const formData = this.getFormData();
+    console.log("📦 Form data:", formData);
+
+    if (!this.validateForm(formData)) {
       return;
     }
 
@@ -44,15 +65,22 @@ class ContactFormManager {
     this.setButtonState(submitBtn, "Mengirim...", true);
 
     try {
-      await emailjs.sendForm(
+      console.log("📤 Sending to EmailJS...");
+      
+      // ✅ FIX: Gunakan this.contactForm langsung
+      const result = await emailjs.sendForm(
         this.emailjsServiceID,
         this.emailjsTemplateID,
         this.contactForm
       );
-
+      
+      console.log("✅ EmailJS Success:", result);
+      
       // Redirect to thank you page on success
       window.location.href = "thankyou.html";
+      
     } catch (error) {
+      console.error("❌ EmailJS Error Details:", error);
       this.handleFormError(error);
     } finally {
       // Reset button state
@@ -60,8 +88,26 @@ class ContactFormManager {
     }
   }
 
-  validateForm(form) {
-    const formData = this.getFormData(form);
+  // ✅ FIX: Method getFormData yang diperbaiki
+  getFormData() {
+    if (!this.contactForm) return {};
+    
+    return {
+      name: this.getFieldValue("name"),
+      email: this.getFieldValue("email"), 
+      subject: this.getFieldValue("subject"),
+      message: this.getFieldValue("message")
+    };
+  }
+
+  // ✅ FIX: Helper method untuk mendapatkan value field
+  getFieldValue(fieldName) {
+    const field = this.contactForm.querySelector(`[name="${fieldName}"]`);
+    return field ? field.value.trim() : "";
+  }
+
+  validateForm(formData) {
+    console.log("🔍 Validating form data:", formData);
 
     if (!this.checkRequiredFields(formData)) {
       alert("Harap isi semua field yang wajib diisi.");
@@ -73,22 +119,14 @@ class ContactFormManager {
       return false;
     }
 
+    console.log("✅ Form validation passed");
     return true;
   }
 
-  getFormData(form) {
-    return {
-      name: form.querySelector("name").value.trim(),
-      email: form.querySelector("email").value.trim(),
-      subject: form.querySelector("subject").value.trim(),
-      message: form.querySelector("message").value.trim(),
-    };
-  }
-
   checkRequiredFields(formData) {
-    return (
-      formData.name && formData.email && formData.subject && formData.message
-    );
+    const isValid = formData.name && formData.email && formData.subject && formData.message;
+    console.log("📋 Required fields check:", isValid, formData);
+    return isValid;
   }
 
   isValidEmail(email) {
@@ -102,9 +140,22 @@ class ContactFormManager {
   }
 
   handleFormError(error) {
-    alert(
-      "❌ Gagal mengirim pesan. Silakan coba lagi atau hubungi via WhatsApp."
-    );
-    console.error("EmailJS Error:", error);
+    let errorMessage = "❌ Gagal mengirim pesan. Silakan coba lagi atau hubungi via WhatsApp.";
+    
+    // ✅ Detailed error handling
+    if (error.text) {
+      console.error("📧 EmailJS Error Response:", error.text);
+    }
+    
+    if (error.status) {
+      console.error("🔢 Error Status:", error.status);
+    }
+    
+    alert(errorMessage);
   }
 }
+
+// ✅ Initialize when DOM is loaded
+document.addEventListener("DOMContentLoaded", function() {
+  new ContactFormManager();
+});
