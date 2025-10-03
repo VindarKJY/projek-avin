@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV Online - [Nama Anda]</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link 
+      href="style.css" 
+      rel="stylesheet" 
+    />
+  </head>
+  <body>
+    <!-- Navigation Overlay (untuk mobile) -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          CV<span style="color: var(--accent-blue)">.</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#profile">Profile</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu" id="mobileMenu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+      <!-- Home Section -->
+      <section id="home" class="section active">
+        <div class="home-content">
+          <img
+            src="image/gamabar_avin-removebg-preview-new.png"
+            alt="Profile Photo"
+            class="profile-img"
+          />
+          <div class="home-text">
+            <h1>VIENDAR FAZA PRASETYA</h1>
+            <div class="title">SMK Graduate | Freelace Web Developer</div>
+            <p>
+              Lulusan SMK dengan jurusan Teknik mesin yang banting setir menjadi Engineer dalam pengembangan web dan teknologi digital. Memiliki
+              pengalaman dalam membangun website responsive dan aplikasi web
+              modern.
+            </p>
+            <div class="cta-buttons">
+              <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
+              <a href="#profile" class="btn btn-secondary">Lihat Profile</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profile Section -->
+      <section id="profile" class="section">
+        <h2 class="section-title">Profile</h2>
+        <div class="profile-grid">
+          <div class="profile-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Pendidikan</h3>
+            <p>SMK Negeri Jateng Di Purbalingga<br />Jurusan teknik mesin <br />Lulus: 2025</p>
+          </div>
+          <div class="profile-card">
+            <i class="fas fa-briefcase"></i>
+            <h3>Pengalaman</h3>
+            <p>
+              Freelance Web Developer<br />Magang industri otomotif PT.Alberindo Prima persada <br />6+ Bulan    
+              Pengalaman
+            </p>
+          </div>
+          <div class="profile-card">
+            <i class="fas fa-star"></i>
+            <h3>Pencapaian</h3>
+            <p>
+              Juara 4 Festifal Seni Pelajar Se-Jawa Tengah<br />Sertifikasi Kompetensi CADD<br />Project
+              Portfolio
+            </p>
+          </div>
+          <div class="profile-card">
+            <i class="fas fa-heart"></i>
+            <h3>Minat</h3>
+            <p>Web Development<br />UI/UX Design<br />Technology Trends</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="section">
+        <h2 class="section-title">Skills & Kemampuan</h2>
+        <div class="skills-container">
+          <div class="skill-category">
+            <h3>Technical Skills</h3>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">HTML/CSS</span>
+                <span class="skill-percentage">90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-percentage">80%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="80%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">PHP & MySQL</span>
+                <span class="skill-percentage">75%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="75%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3>Professional Skills</h3>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">UI/UX Design</span>
+                <span class="skill-percentage">85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Problem Solving</span>
+                <span class="skill-percentage">88%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="88%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Teamwork</span>
+                <span class="skill-percentage">92%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="92%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h4>Telepon</h4>
+                <p>+62 812-3456-7890</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h4>Email</h4>
+                <p>email@example.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h4>Lokasi</h4>
+                <p>Kota Anda, Indonesia</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <h4>Available</h4>
+                <p>Senin - Jumat, 09:00 - 17:00</p>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name">Nama Lengkap</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                placeholder="Masukkan nama Anda"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="Masukkan email Anda"
+              />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subjek</label>
+              <input
+                type="text"
+                id="subject"
+                class="form-control"
+                placeholder="Subjek pesan"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Pesan</label>
+              <textarea
+                id="message"
+                class="form-control"
+                placeholder="Tulis pesan Anda..."
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+          </form>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Load EmailJS library -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Load your JavaScript files -->
+    <script src="main.js"></script>
+    <script src="contact.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

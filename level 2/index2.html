@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV Online - [Nama Anda]</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-blue: #2563eb;
+        --secondary-blue: #3b82f6;
+        --accent-blue: #60a5fa;
+        --dark-blue: #1e40af;
+        --light-blue: #dbeafe;
+        --text-dark: #1f2937;
+        --text-light: #6b7280;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Header & Navigation */
+      .cv-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--dark-blue)
+        );
+        color: var(--white);
+        padding: 3rem 2rem;
+        border-radius: 20px;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+        animation: slideDown 1s ease-out;
+      }
+
+      .cv-header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 1px,
+          transparent 1px
+        );
+        background-size: 50px 50px;
+        animation: float 20s linear infinite;
+      }
+
+      .profile-section {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 4px solid var(--white);
+        object-fit: cover;
+        animation: bounceIn 1s ease-out;
+      }
+
+      .profile-info h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        animation: fadeInUp 1s ease-out 0.2s both;
+      }
+
+      .profile-info .title {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        animation: fadeInUp 1s ease-out 0.4s both;
+      }
+
+      /* Main CV Layout */
+      .cv-main {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 2rem;
+        animation: fadeIn 1s ease-out 0.6s both;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-info,
+      .skills,
+      .languages {
+        margin-bottom: 2rem;
+      }
+
+      .section-title {
+        color: var(--primary-blue);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--light-blue);
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: var(--accent-blue);
+      }
+
+      .contact-item,
+      .skill-item,
+      .language-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .contact-item:hover,
+      .skill-item:hover {
+        background: var(--light-blue);
+        transform: translateX(5px);
+      }
+
+      .contact-item i {
+        color: var(--primary-blue);
+        width: 20px;
+      }
+
+      .skill-bar {
+        background: #e5e7eb;
+        height: 8px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 0.5rem;
+      }
+
+      .skill-level {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--accent-blue)
+        );
+        border-radius: 10px;
+        transition: width 2s ease-in-out;
+      }
+
+      /* Main Content */
+      .main-content {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about,
+      .experience,
+      .education,
+      .projects {
+        margin-bottom: 2rem;
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 2rem;
+        animation: fadeInRight 1s ease-out both;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          var(--primary-blue),
+          var(--accent-blue)
+        );
+        border-radius: 10px;
+      }
+
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        left: -4px;
+        top: 0;
+        width: 11px;
+        height: 11px;
+        background: var(--primary-blue);
+        border-radius: 50%;
+        border: 3px solid var(--white);
+        box-shadow: 0 0 0 3px var(--primary-blue);
+      }
+
+      .timeline-date {
+        color: var(--primary-blue);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-content h3 {
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-content p {
+        color: var(--text-light);
+      }
+
+      /* Projects Grid */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .project-card {
+        background: var(--light-blue);
+        padding: 1.5rem;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-blue);
+        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+      }
+
+      .project-card h4 {
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+      }
+
+      /* Footer */
+      .cv-footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--white);
+        margin-top: 2rem;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: var(--white);
+        color: var(--primary-blue);
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        transform: scale(1.1);
+        background: var(--primary-blue);
+        color: var(--white);
+      }
+
+      /* Animations */
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes bounceIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+        70% {
+          transform: scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        100% {
+          transform: translate(50px, 50px) rotate(360deg);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .cv-main {
+          grid-template-columns: 1fr;
+        }
+
+        .profile-section {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .profile-info h1 {
+          font-size: 2rem;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Print Styles */
+      @media print {
+        body {
+          background: white !important;
+        }
+        .cv-header,
+        .sidebar,
+        .main-content {
+          box-shadow: none !important;
+        }
+        .social-links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="cv-header">
+        <div class="profile-section">
+          <img
+            src="image/gamabar_avin-removebg-preview-new.png"
+            alt="Profile Photo"
+            class="profile-img"
+          />
+          <div class="profile-info">
+            <h1>VIENDAR FAZA PRASETYA</h1>
+            <div class="title">SMK Graduate | Web Developer</div>
+            <p>
+              Lulusan SMK yang bersemangat dalam pengembangan web dan teknologi
+              digital
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="cv-main">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="contact-info">
+            <h3 class="section-title">Kontak</h3>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+62 812-3456-7890</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>email@example.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Kota Anda, Indonesia</span>
+            </div>
+            <div class="contact-item">
+              <i class="fab fa-linkedin"></i>
+              <span>linkedin.com/in/username</span>
+            </div>
+          </div>
+
+          <div class="skills">
+            <h3 class="section-title">Skills</h3>
+            <div class="skill-item">
+              <div>
+                <span>HTML/CSS</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 90%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div>
+                <span>JavaScript</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 80%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div>
+                <span>UI/UX Design</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 75%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div>
+                <span>PHP & MySQL</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 70%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="languages">
+            <h3 class="section-title">Bahasa</h3>
+            <div class="language-item">
+              <i class="fas fa-check"></i>
+              <span>Indonesia (Native)</span>
+            </div>
+            <div class="language-item">
+              <i class="fas fa-check"></i>
+              <span>English (Intermediate)</span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <section class="about">
+            <h3 class="section-title">Tentang Saya</h3>
+            <p>
+              Lulusan SMK dengan jurusan Teknik Komputer dan Jaringan yang
+              memiliki passion dalam pengembangan web. Memiliki pengalaman dalam
+              membuat website responsive dan aplikasi web sederhana. Selalu
+              bersemangat untuk belajar teknologi terbaru dan berkembang di
+              industri digital.
+            </p>
+          </section>
+
+          <section class="experience">
+            <h3 class="section-title">Pengalaman</h3>
+            <div class="timeline-item">
+              <div class="timeline-date">2023 - Sekarang</div>
+              <div class="timeline-content">
+                <h3>Freelance Web Developer</h3>
+                <p>
+                  Membangun website untuk UMKM lokal dan project personal.
+                  Mengembangkan solusi digital yang responsive dan
+                  user-friendly.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">2022 - 2023</div>
+              <div class="timeline-content">
+                <h3>Magang - Perusahaan </h3>
+                <p>
+                  Magang sebagai junior web developer. Berkolaborasi dalam
+                  pengembangan frontend dan maintenance website perusahaan.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="education">
+            <h3 class="section-title">Pendidikan</h3>
+            <div class="timeline-item">
+              <div class="timeline-date">2020 - 2023</div>
+              <div class="timeline-content">
+                <h3>SMK Negeri 1 Kota</h3>
+                <p>Jurusan: Teknik Komputer dan Jaringan</p>
+                <p>Nilai Akhir: 85.5</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">2017 - 2020</div>
+              <div class="timeline-content">
+                <h3>SMP Negeri 1 Kota</h3>
+                <p>Nilai UN: 85.0</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="projects">
+            <h3 class="section-title">Project</h3>
+            <div class="projects-grid">
+              <div class="project-card">
+                <h4>Website Portfolio</h4>
+                <p>
+                  Website portfolio responsive dengan animasi CSS3 dan
+                  JavaScript
+                </p>
+              </div>
+              <div class="project-card">
+                <h4>Sistem Inventory</h4>
+                <p>
+                  Aplikasi web untuk management inventory menggunakan PHP dan
+                  MySQL
+                </p>
+              </div>
+              <div class="project-card">
+                <h4>Landing Page UMKM</h4>
+                <p>Website promosi untuk usaha kecil dengan desain modern</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="cv-footer">
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+        <p>&copy; 2024 CV Online. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      // Animasi skill bars ketika di-scroll
+      document.addEventListener("DOMContentLoaded", function () {
+        const skillBars = document.querySelectorAll(".skill-level");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const skillLevel = entry.target;
+                skillLevel.style.width = skillLevel.style.width;
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+
+        skillBars.forEach((bar) => observer.observe(bar));
+
+        // Smooth scroll untuk anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
