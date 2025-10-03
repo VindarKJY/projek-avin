@@ -88,23 +88,17 @@ class ContactFormManager {
     }
   }
 
-  // ✅ FIX: Method getFormData yang diperbaiki
-  getFormData() {
-    if (!this.contactForm) return {};
-    
-    return {
-      name: this.getFieldValue("name"),
-      email: this.getFieldValue("email"), 
-      subject: this.getFieldValue("subject"),
-      message: this.getFieldValue("message")
-    };
-  }
-
-  // ✅ FIX: Helper method untuk mendapatkan value field
-  getFieldValue(fieldName) {
-    const field = this.contactForm.querySelector(`[name="${fieldName}"]`);
-    return field ? field.value.trim() : "";
-  }
+  // ✅ ALTERNATIF LEBIH SIMPLE:
+getFormData() {
+  if (!this.contactForm) return {};
+  
+  return {
+    name: this.contactForm.querySelector('[name="name"]')?.value.trim() || '',
+    email: this.contactForm.querySelector('[name="email"]')?.value.trim() || '',
+    subject: this.contactForm.querySelector('[name="subject"]')?.value.trim() || '',
+    message: this.contactForm.querySelector('[name="message"]')?.value.trim() || ''
+  };
+}
 
   validateForm(formData) {
     console.log("🔍 Validating form data:", formData);
