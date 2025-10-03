@@ -78,10 +78,10 @@ class ContactFormManager {
 
   getFormData(form) {
     return {
-      name: form.querySelector("#name").value.trim(),
-      email: form.querySelector("#email").value.trim(),
-      subject: form.querySelector("#subject").value.trim(),
-      message: form.querySelector("#message").value.trim(),
+      name: form.querySelector("name").value.trim(),
+      email: form.querySelector("email").value.trim(),
+      subject: form.querySelector("subject").value.trim(),
+      message: form.querySelector("message").value.trim(),
     };
   }
 
