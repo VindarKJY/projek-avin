@@ -1,0 +1,57 @@
+/* Home Section */
+.home-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.profile-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--neon-blue);
+  box-shadow: 
+    var(--glow-blue),
+    inset 0 0 20px rgba(0, 245, 255, 0.3);
+  justify-self: center;
+  animation: float 3s ease-in-out infinite;
+  position: relative;
+}
+
+.profile-img::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  z-index: -1;
+  animation: rotate 3s linear infinite;
+}
+
+.home-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: var(--glow-blue);
+}
+
+.home-text .title {
+  font-size: 1.5rem;
+  color: var(--neon-cyan);
+  margin-bottom: 1rem;
+  text-shadow: var(--glow-cyan);
+}
+
+.home-text p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}

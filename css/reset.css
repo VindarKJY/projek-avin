@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--gradient-dark);
+  min-height: 100vh;
+  color: var(--text-primary);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  padding-top: 80px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Tech Background Pattern */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(0, 245, 255, 0.1) 2px, transparent 0),
+    radial-gradient(circle at 75% 75%, rgba(188, 19, 254, 0.1) 2px, transparent 0);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  z-index: -1;
+  animation: gridMove 20s linear infinite;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-secondary);
+}

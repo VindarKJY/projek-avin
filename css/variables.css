@@ -1,0 +1,26 @@
+:root {
+  --primary-bg: #0a0a0f;
+  --secondary-bg: #12121f;
+  --card-bg: #1a1a2e;
+  --accent-bg: #16213e;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  /* Neon Colors */
+  --neon-blue: #00f5ff;
+  --neon-purple: #bc13fe;
+  --neon-cyan: #00ffea;
+  --neon-pink: #ff00ff;
+  --neon-green: #39ff14;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-purple) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-pink) 100%);
+  --gradient-dark: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  
+  /* Glow Effects */
+  --glow-blue: 0 0 10px rgba(0, 245, 255, 0.7), 0 0 20px rgba(0, 245, 255, 0.5), 0 0 30px rgba(0, 245, 255, 0.3);
+  --glow-purple: 0 0 10px rgba(188, 19, 254, 0.7), 0 0 20px rgba(188, 19, 254, 0.5), 0 0 30px rgba(188, 19, 254, 0.3);
+  --glow-cyan: 0 0 10px rgba(0, 255, 234, 0.7), 0 0 20px rgba(0, 255, 234, 0.5), 0 0 30px rgba(0, 255, 234, 0.3);
+}

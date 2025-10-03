@@ -1,10 +1,8 @@
-/* ===== NAVIGATION ===== */
-
-/* Navbar */
+/* Navigation */
 .navbar {
   background: rgba(10, 10, 15, 0.95);
   backdrop-filter: blur(20px);
-  padding: var(--space-sm) var(--space-lg);
+  padding: 1rem 2rem;
   position: fixed;
   top: 0;
   width: 100%;
@@ -21,7 +19,6 @@
   align-items: center;
 }
 
-/* Logo */
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
@@ -32,20 +29,19 @@
   text-shadow: var(--glow-blue);
 }
 
-/* Navigation Links */
 .nav-links {
   display: flex;
   list-style: none;
-  gap: var(--space-lg);
+  gap: 2rem;
 }
 
 .nav-links a {
   text-decoration: none;
   color: var(--text-secondary);
   font-weight: 500;
-  padding: var(--space-xs) var(--space-sm);
+  padding: 0.5rem 1rem;
   border-radius: 25px;
-  transition: all var(--transition-fast);
+  transition: all 0.3s ease;
   position: relative;
   border: 1px solid transparent;
 }
@@ -72,7 +68,7 @@
   width: 0;
   height: 2px;
   background: var(--neon-cyan);
-  transition: all var(--transition-fast);
+  transition: all 0.3s ease;
   transform: translateX(-50%);
   box-shadow: var(--glow-cyan);
 }
@@ -81,13 +77,12 @@
   width: 80%;
 }
 
-/* Mobile Menu */
 .mobile-menu {
   display: none;
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--neon-cyan);
-  transition: all var(--transition-fast);
+  transition: all 0.3s ease;
 }
 
 .mobile-menu:hover {
